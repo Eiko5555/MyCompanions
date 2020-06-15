@@ -1,0 +1,127 @@
+package com.example.mycompanions;
+
+public class JsonResponse {
+    /*
+}
+    animals>>type>>dog>>photos>>small
+    {やりすぎ都市伝説
+        "animals":[
+          {
+            "id":46016175,"
+            organization_id":"TN691","
+            url":"https:\/\/www.petfinder.com\/dog\/yancy-fostered-in-tn-46016175\/ct\
+            /brooklyn\/angels-among-us-animal-rescue-tn691\
+            /?referrer_id=f4bd99ae-b825-4f8c-9a07-14fd29559a1d",
+            "type":"Dog",
+            "species":"Dog",
+            "breeds": {"primary":"Pit Bull Terrier","secondary":"Terrier","mixed":true,
+                        "unknown":false},
+            "colors": {"primary":"Brindle","secondary":"White \/ Cream","tertiary":null},
+            "age":"Baby",
+            "gender":"Male",
+            "size":"Medium",
+            "coat":"Short",
+            "attributes": {"spayed_neutered":true,"house_trained":false,"declawed":null,
+                           "special_needs":false,"shots_current":true},
+            "environment": {"children":true,"dogs":true,"cats":true},
+            "tags":[],
+            "name":"Yancy
+            (Fostered in TN)",
+            "description":"Meet Yancy!\n\nYancy is a 9 week old adorable mixed breed puppy.  He was found sitting at the edge of...",
+            "photos":[
+            {
+              "small":"https:\/\/dl5zpyw5k3jeb.cloudfront.net\/photos\/pets\/46016175\/3\/?bust=1568775621\u0026width=100",
+              "medium":"https:\/\/dl5zpyw5k3jeb.cloudfront.net\/photos\/pets\/46016175\/3\/?bust=1568775621\u0026width=300",
+              "large":"https:\/\/dl5zpyw5k3jeb.cloudfront.net\/photos\/pets\/46016175\/3\/?bust=1568775621\u0026width=600",
+              "full":"https:\/\/dl5zpyw5k3jeb.cloudfront.net\/photos\/pets\/46016175\/3\/?bust=1568775621"},
+            {
+              "small":"https:\/\/dl5zpyw5k3jeb.cloudfront.net\/photos\/pets\/46016175\/1\/?bust=1568775613\u0026width=100",
+              "medium":"https:\/\/dl5zpyw5k3jeb.cloudfront.net\/photos\/pets\/46016175\/1\/?bust=1568775613\u0026width=300",
+              "large":"https:\/\/dl5zpyw5k3jeb.cloudfront.net\/photos\/pets\/46016175\/1\/?bust=1568775613\u0026width=600",
+              "full":"https:\/\/dl5zpyw5k3jeb.cloudfront.net\/photos\/pets\/46016175\/1\/?bust=1568775613"},
+            {
+              "small":"https:\/\/dl5zpyw5k3jeb.cloudfront.net\/photos\/pets\/46016175\/2\/?bust=1568775619\u0026width=100",
+              "medium":"https:\/\/dl5zpyw5k3jeb.cloudfront.net\/photos\/pets\/46016175\/2\/?bust=1568775619\u0026width=300",
+              "large":"https:\/\/dl5zpyw5k3jeb.cloudfront.net\/photos\/pets\/46016175\/2\/?bust=1568775619\u0026width=600",
+              "full":"https:\/\/dl5zpyw5k3jeb.cloudfront.net\/photos\/pets\/46016175\/2\/?bust=1568775619"}],
+            "status":"adoptable",
+            "status_changed_at":"2019-09-18T03:01:08+0000",
+            "published_at":"2019-09-18T03:01:08+0000",
+            "distance":null,
+            "contact":
+            {
+                "email":"angie@angelsamongusanimalrescue.org",
+                "phone":"9014764958",
+                "address":
+                {
+                  "address1":null,
+                  "address2":null,
+                  "city":"Brooklyn",
+                  "state":"CT",
+                  "postcode":"06234",
+                  "country":"US"}
+            },
+            "_links":
+            {
+                "self":{"href":"\/v2\/animals\/46016175"},
+                "type":{"href":"\/v2\/types\/dog"},
+                "organization":{"href":"\/v2\/organizations\/tn691"}
+            }
+        },
+        {
+            "id":46016198,
+            "organization_id":"KS296",
+            "url":"https:\/\/www.petfinder.com\/dog\/bruce-46016198\/ks\/olathe\/pawsitive-tails-ks296\/?referrer_id=f4bd99ae-b825-4f8c-9a07-14fd29559a1d",
+            "type":"Dog",
+            "species":"Dog",
+            "breeds":
+            {
+               "primary":"Black Mouth Cur","secondary":null,"mixed":false,"unknown":false
+            },
+            "colors":
+            {
+               "primary":null,"secondary":null,"tertiary":null
+            },
+            "age":"Adult",
+            "gender":"Male",
+            "size":"Medium",
+            "coat":null,
+            "attributes":
+            {
+              "spayed_neutered":false,
+              "house_trained":false,
+              "declawed":null,
+              "special_needs":false,
+              "shots_current":false
+            },
+            "environment":
+            {
+               "children":null,"dogs":null,"cats":null
+            },
+            "tags":[],
+            "name":"Bruce",
+            "description":null
+            ,"photos":[],
+            "status":"adoptable",
+            "status_changed_at":"2019-09-18T03:00:26+0000",
+            "published_at":"2019-09-18T03:00:26+0000",
+            "distance":null,
+            "contact":
+            {
+                "email":"info@pawsitivetailskc.org","phone":null,
+                "address":
+                {
+                    "address1":null,
+                    "address2":null,
+                    "city":"Olathe",
+                    "state":"KS",
+                    "postcode":"66061",
+                    "country":"US"
+                    }
+             },
+            "_links":
+            {
+                "self":
+                {
+                    "href":"\/v2\/animals\/46016198"},"type":{"href":"\/v2\/types\/dog"},"organization":{"href":"\/v2\/organizations\/ks296"}}}, */
+}
