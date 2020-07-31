@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
@@ -12,20 +13,20 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.squareup.picasso.Picasso;
 
 public class ViewPagerAdapter extends PagerAdapter {
-    String[] imges;
+    String[] stringArray;
     private Context context;
     private LayoutInflater layoutInflater;
 
     public ViewPagerAdapter(Context context,
-                            String[] imges) {
+                            String[] stringArray) {
 //                            String imges){
         this.context = context;
-        this.imges = imges;
+        this.stringArray = stringArray;
     }
 
     @Override
     public int getCount() {
-        return imges.length;
+        return stringArray.length;
     }
 
     @Override
@@ -37,15 +38,18 @@ public class ViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View view = layoutInflater.inflate(R.layout.custom_layout_detal_img, null);
+        View view = layoutInflater.inflate(R.layout.custom_layout_detal_img, null);
 //        ImageView imageView1 = view.findViewById(R.id.imageView_detail);
+        ProgressBar spinner = (ProgressBar)view.findViewById(R.id.progressBar3);
         ImageView imageView = new ImageView(context);
-        if (imges == null) {
+
+        if (stringArray == null) {
             imageView.setImageResource(R.drawable.no_image);
         }
+
         Picasso.get()
 //                .load(imges)
-                .load(imges[position])
+                .load(stringArray[position])
 //                .centerInside()
 //                .fit()
                 .placeholder(R.drawable.no_image)

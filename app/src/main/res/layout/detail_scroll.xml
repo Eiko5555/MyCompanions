@@ -9,13 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <TextView
             android:id="@+id/textView_detail_name"
             android:layout_width="227dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="Sunshine"
             android:textColor="@color/colorLargeText"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -29,7 +29,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="gender"
             android:textColor="@color/text_color_black"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +41,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="breed"
             android:textColor="@color/text_color_black"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +54,19 @@
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_breeds" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_breeds" >
+
+            <ProgressBar
+                android:id="@+id/progressBar3"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.viewpager.widget.ViewPager>
 
         <LinearLayout
             android:id="@+id/sliderDots"
@@ -207,6 +217,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_organization_website" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

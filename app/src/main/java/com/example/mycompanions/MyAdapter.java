@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -45,13 +47,19 @@ public class MyAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Friend pets = petlist.get(position);
-        //setting Glide.
-//        Glide.with(context).load(pets.getSmall()).placeholder(R.drawable.no_image).
+        String url = pets.getSmall();
+        RequestOptions requestOptions = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL);
+        //setting Glide.  pets.getSmall()
+        Glide.get(context).clearMemory();
+        Glide.with(context).load(url).apply(requestOptions)
+                .thumbnail(0.5f).circleCrop()
+                .placeholder(R.mipmap.noimagemaru_round)
+                .error(R.mipmap.noimagemaru_round)
+                .into(((ItemHolder) holder).imageView);
+//        GlideApp.with(context).
+//                load(pets.getSmall()).
+//                placeholder(R.drawable.no_image).
 //                into(((ItemHolder) holder).imageView);
-        GlideApp.with(context).
-                load(pets.getSmall()).
-                placeholder(R.drawable.no_image).
-                into(((ItemHolder) holder).imageView);
         //setting on Picasso
 //        Picasso.get().load(pets.getSmall()).placeholder(R.drawable.no_image)
 //                .error(R.drawable.no_image).into(((ItemHolder) holder).imageView);
@@ -72,18 +80,7 @@ public class MyAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(context, Detail.class);
-                    i.putExtra("name", petlist.get(getAdapterPosition()).getName());
-                    i.putExtra("gender", petlist.get(getAdapterPosition()).getGender());
-                    i.putExtra("mediumArray", petlist.get(getAdapterPosition()).getImgsArray());
-//                    i.putExtra("medium", petlist.get(getAdapterPosition()).getSmall());
-                    i.putExtra("breeds", petlist.get(getAdapterPosition()).getBreeds());
-                    i.putExtra("description", petlist.get(getAdapterPosition()).getDescription());
-                    i.putExtra("organization_name", petlist.get(getAdapterPosition()).getOrganizationName());
-                    i.putExtra("email", petlist.get(getAdapterPosition()).getEmail());
-                    i.putExtra("phone", petlist.get(getAdapterPosition()).getPhone());
-                    i.putExtra("website", petlist.get(getAdapterPosition()).getWebsite());
-                    i.putExtra("address", petlist.get(getAdapterPosition()).getAddress());
-                    i.putExtra("spayed_neutered", petlist.get(getAdapterPosition()).getSpayInfo());
+                      i.putExtra("id", petlist.get(getAdapterPosition()).getId());
                     context.startActivity(i);
                 }
             });
