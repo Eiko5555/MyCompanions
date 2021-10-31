@@ -18,7 +18,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -35,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
     String API_KEY_CLIENT_ID = "KEY";
     String SECRET_KEY = "KEY";
     String URL_POST = "https://api.petfinder.com/v2/oauth2/token";
-    String URL_GET_ORGANIZATION = "https://api.petfinder.com/v2/organizations/";
-    String URL_GET_ANIMALS_TYPE_DOG = "https://api.petfinder.com/v2/animals?type=dog";
-    String URL_GET_ANIMAL_TYPES = "https://api.petfinder.com/v2/types";
+//    String URL_GET_ORGANIZATION = "https://api.petfinder.com/v2/organizations/";
+//    String URL_GET_ANIMALS_TYPE_DOG = "https://api.petfinder.com/v2/animals?type=dog";
+//    String URL_GET_ANIMAL_TYPES = "https://api.petfinder.com/v2/types";
     String URL_GET_ANIMALS_SIZE_SMALL = "https://api.petfinder.com/v2/animals?size=small&age=senior";
     String URL_GET_ANIMALS_SIZE_MEDIUM = "https://api.petfinder.com/v2/animals?size=medium&age=senior";
     String URL_GET_ANIMALS_SIZE_LARGE = "https://api.petfinder.com/v2/animals?size=large&age=senior";
     String URL_GET_ANIMALS_SIZE_XLARGE = "https://api.petfinder.com/v2/animals?size=xlarge&age=senior";
-    final MediaType JSON = MediaType.get("application/json; charset=utf-8");
-    String postResponse, accessToken, getResponse, getResponseID;
+//    final MediaType JSON = MediaType.get("application/json; charset=utf-8");
+    String postResponse, accessToken, getResponse; //getResponseID;//
     String size;
     String img1;
     Integer id;
@@ -53,14 +52,17 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Friend> mediumFriend = new ArrayList<>();
     ArrayList<Friend> LargeFriend = new ArrayList<>();
     ArrayList<Friend> XlargeFriend = new ArrayList<>();
-    ArrayList photoArray = new ArrayList();
+    ArrayList<String> photoArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        ProgressBar bar = (ProgressBar) findViewById(R.id.progressBar);
+//        int progressValue = bar.getProgress();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+//        bar.setVisibility(View.VISIBLE);
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -77,8 +79,9 @@ public class MainActivity extends AppCompatActivity {
         new loadMedium().execute();
         new loadLarge().execute();
         new loadXL().execute();
-        petgetInfo.getSize();
+//        petgetInfo.getSize();
         petInfoList.add(petgetInfo);
+//        bar.setVisibility(View.INVISIBLE);
         petgetInfo = new Friend();
     }
 
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 response = client.newCall(request).execute();
                 postResponse = response.body().string();
-//                System.out.println(postResponse);
+                System.out.println(postResponse);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -128,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+//<Object, Void, Object>
     class loadSmall extends AsyncTask {
         @Override
         protected Object doInBackground(Object[] objects) {
@@ -261,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
                         pet.setSmall(img1);
                     }
                     LargeFriend.add(pet);
-                    if (size == "small") {
+                    if (size=="small") {
                         smallFriend.add(pet);
                     }
                     pet = new Friend();

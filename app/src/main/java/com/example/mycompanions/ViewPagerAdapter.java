@@ -40,20 +40,21 @@ public class ViewPagerAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.custom_layout_detal_img, null);
 //        ImageView imageView1 = view.findViewById(R.id.imageView_detail);
-        ProgressBar spinner = (ProgressBar)view.findViewById(R.id.progressBar3);
+        ProgressBar progressBar = (ProgressBar)view.findViewById(R.id.progressBar);
         ImageView imageView = new ImageView(context);
-
+        progressBar.setVisibility(View.VISIBLE);
         if (stringArray == null) {
-            imageView.setImageResource(R.drawable.no_image);
+            progressBar.setVisibility(View.INVISIBLE);
+            imageView.setImageResource(R.drawable.heart);
         }
-
+        progressBar.setVisibility(View.INVISIBLE);
         Picasso.get()
 //                .load(imges)
                 .load(stringArray[position])
 //                .centerInside()
 //                .fit()
-                .placeholder(R.drawable.no_image)
-                .error(R.drawable.no_image)
+//                .placeholder(R.drawable.heart)
+                .error(R.drawable.heart)
                 .into(imageView);
         container.addView(imageView);
 //        imageView.setImageResource((Integer) listOfImages.get(position));

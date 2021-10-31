@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "com.example.mycompanions"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -36,4 +36,25 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'com.squareup.okhttp3:okhttp:4.2.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //dependencies for material components
+    implementation 'com.google.android.material:material:1.2.1'
+//    def nav_version = "2.3.5"
+//    // Java language implementation
+//    implementation "androidx.navigation:navigation-fragment:$nav_version"
+//    implementation "androidx.navigation:navigation-ui:$nav_version"
+//
+//    // Kotlin
+//    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+//    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+//
+//    // Feature module Support
+//    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+//
+//    // Testing Navigation
+//    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+//
+//    // Jetpack Compose Integration
+//    implementation "androidx.navigation:navigation-compose:1.0.0-alpha10"
+
+
 }

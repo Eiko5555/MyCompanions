@@ -2,10 +2,8 @@ package com.example.mycompanions;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -45,7 +43,7 @@ public class Detail extends AppCompatActivity {
     String breeds_info, description, organization_id, spayed_neutered_result_string;
     Integer id;
     Boolean spayed_neutered;
-    ArrayList photoArray = new ArrayList();
+    ArrayList<String> photoArray = new ArrayList<>();
     ViewPager viewPager;
     String[] stringArray;
     TextView tv_name, tv_gender, tv_breed, tv_neutured_result, tv_description,
@@ -54,7 +52,10 @@ public class Detail extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setting progress circuler here prior to image.
         setContentView(R.layout.detail_scroll);
+//        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+//        setProgressBarIndeterminateVisibility(true);
         id = getIntent().getExtras().getInt("id");
         System.out.println("ID:" + id);
         tv_name = findViewById(R.id.textView_detail_name);
@@ -121,23 +122,23 @@ public class Detail extends AppCompatActivity {
                     description = jsonObjectAnimal.getString("description");
                     organization_id = jsonObjectAnimal.getString("organization_id");
                     contact = jsonObjectAnimal.getString("contact");
-                    if (description == "null") {
+                    if (description.equals("null")) {
                         description = "No comment from organization.";
                     }
                     JSONObject forBreedJSOnO = jsonObjectAnimal.getJSONObject("breeds");
                     primaryBreed = forBreedJSOnO.getString("primary");
                     secondaryBreed = forBreedJSOnO.getString("secondary");
                     unknownBreed = forBreedJSOnO.getString("unknown");
-                    if (unknownBreed == "true") {
+                    if (unknownBreed.equals("true")) {
                         breeds_info = "Unknown";
                     }
-                    if (secondaryBreed != "null") {
+                    if (!secondaryBreed.equals("null")) {
                         breeds_info = primaryBreed + " " + secondaryBreed + " Mix.";
                     }
-                    if (secondaryBreed != "Mixed Breed") {
+                    if (!secondaryBreed.equals("Mixed Breed")) {
                         breeds_info = primaryBreed + " " + secondaryBreed + " Mix.";
                     }
-                    if (secondaryBreed != "Mixed Breed" || secondaryBreed == "null") {
+                    if (!secondaryBreed.equals("Mixed Breed") || secondaryBreed.equals("null")) {
                         breeds_info = primaryBreed + " Mix";
                     }//get Json forOrganization info with their ID.
                     Request requestID = new Request.Builder() /*getting all JSON info*/
@@ -155,17 +156,17 @@ public class Detail extends AppCompatActivity {
                     JSONObject jsonObjOrgID = objForID.getJSONObject("organization");
                     orgName = jsonObjOrgID.getString("name");
                     orgEmail = jsonObjOrgID.getString("email");
-                    if (orgEmail == "null") {
+                    if (orgEmail.equals("null")) {
                         orgEmail = "No Email information.";
                     }
 //                    Log.i("Email: ", orgEmail);
                     orgPhone = jsonObjOrgID.getString("phone");
-                    if (orgPhone == "null") {
+                    if (orgPhone.equals("null")) {
                         orgPhone = "No phone number information.";
                     }
 //                    Log.i("Denwa: ", orgPhone);
                     orgWebsite = jsonObjOrgID.getString("website");
-                    if (orgWebsite == "null") {
+                    if (orgWebsite.equals("null")) {
                         orgWebsite = "No website information.";
                     }
 //                    Log.i("Web: ", orgWebsite);
@@ -178,7 +179,7 @@ public class Detail extends AppCompatActivity {
                     JSONObject objAttribute = jsonObjectAnimal.getJSONObject("attributes");
                     spayed_neutered = objAttribute.getBoolean("spayed_neutered");
                     spayed_neutered_result_string = "Yes";
-                    if (spayed_neutered == false) {
+                    if (!spayed_neutered) {
                         spayed_neutered_result_string = "No";
                     }
                     JSONArray jsonArrayPhotoes = jsonObjectAnimal.getJSONArray("photos");
@@ -187,13 +188,13 @@ public class Detail extends AppCompatActivity {
                             img = jsonArrayPhotoes.getJSONObject(p).getString("medium");
                             photoArray.add(img);
                             stringArray = new String[photoArray.size()];
-                            photoArray.toArray(stringArray);
+                            photoArray.toArray(stringArray);   //new Object[0]);
                             pet.setImgsArray(stringArray);
-//                            System.out.println("stringArray1: " + photoArray);
+                            System.out.println("stringArray1: " + photoArray);
                         }
                     } else {
                         photoArray.clear();
-                        int drawable = R.drawable.no_image;
+                        int drawable = R.drawable.heart;
                         String image_string = String.valueOf(drawable);
                         photoArray.add(image_string);
                         stringArray = new String[photoArray.size()];
@@ -219,9 +220,8 @@ public class Detail extends AppCompatActivity {
                 tv_website.setText(orgWebsite);
                 tv_address.setText(address);
                 tv_neutured_result.setText(spayed_neutered_result_string);
-                String[] a = pet.getImgsArray();
-                System.out.println("stringArray3: " + a);
-                photoArray.toArray(a);
+//                setProgressBarIndeterminateVisibility(false);
+                photoArray.toArray(new Object[0]);
                 if (photoArray != null) {
                     ViewPagerAdapter viewPagerAdapter =
                             new ViewPagerAdapter(Detail.this, stringArray);

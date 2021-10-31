@@ -5,4 +5,8 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorLargeText">#1976D2</color>
     <color name="text_color_black">#000000</color>
+    <color name="softsalmonpinkorange">#FFCCBC</color>
+    <color name="softorangelighter">#FBE9E7</color>
+    <color name="darkgraytitle">#717074</color>
+    <color name="superdarkgray">#4a494a</color>
 </resources>

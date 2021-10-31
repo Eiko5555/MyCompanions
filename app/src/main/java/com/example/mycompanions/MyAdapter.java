@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -48,13 +49,16 @@ public class MyAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Friend pets = petlist.get(position);
         String url = pets.getSmall();
-        RequestOptions requestOptions = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL);
+
+        RequestOptions requestOptions = new
+                RequestOptions().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC);
         //setting Glide.  pets.getSmall()
-        Glide.get(context).clearMemory();
+//        Glide.get(context).clearMemory();
         Glide.with(context).load(url).apply(requestOptions)
-                .thumbnail(0.5f).circleCrop()
-                .placeholder(R.mipmap.noimagemaru_round)
-                .error(R.mipmap.noimagemaru_round)
+//                .thumbnail(0.5f)
+//                .circleCrop()
+                .placeholder(R.drawable.heart)
+                .error(R.drawable.heart)
                 .into(((ItemHolder) holder).imageView);
 //        GlideApp.with(context).
 //                load(pets.getSmall()).
@@ -72,18 +76,21 @@ public class MyAdapter extends RecyclerView.Adapter {
 
     public class ItemHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-
+        ProgressBar spinner;
         public ItemHolder(View itemview) {
             super(itemview);
             imageView = itemview.findViewById(R.id.image_recycler);
+
             itemview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(context, Detail.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                       i.putExtra("id", petlist.get(getAdapterPosition()).getId());
-                    context.startActivity(i);
+                    context.getApplicationContext().startActivity(i);
                 }
             });
         }
     }
+
 }
